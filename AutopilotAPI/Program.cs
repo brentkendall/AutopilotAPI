@@ -49,7 +49,7 @@ namespace AutopilotAPI
             Console.WriteLine($"======================================================================================================================");
             Console.WriteLine($"AutoPilot validate");
             var uri = $"{AutpilotBaseURL}/validate";
-            // Entere valid data for submitData below - this is an example with bogus data only
+            // Enter valid values for submitData below - this is an example with bogus values only
             var submitData = "{'PurchaseOrderId': 'Pilotsub1','GroupTag': 'tag1','TenantID': '0de59b18-c850-4a92-b7d8-8fde5ba8f838','TenantDomain': 'SampleTenantName.com',  'SoldToCustomerID': '0000130368',  'ReceivedFromCustomerID': '0000130368',  'Devices': [{'ProductKey': '345457677' }]}";
             var requestObj = (HttpWebRequest)System.Net.WebRequest.Create(uri);
             requestObj.Method = "POST";
@@ -80,7 +80,7 @@ namespace AutopilotAPI
             Console.WriteLine($"======================================================================================================================");
             Console.WriteLine($"AutoPilot Register");
             var uri = $"{AutpilotBaseURL}";
-            // Entere valid data for submitData below - this is an example with bogus data only
+            // Enter valid values for submitData below - this is an example with bogus values only
             var submitData = "{'PurchaseOrderId': 'Pilotsub1','GroupTag': 'tag1','TenantID': '0de59b18-c850-4a92-b7d8-8fde5ba8f838','TenantDomain': 'SampleTenantName.com',  'SoldToCustomerID': '0000130368',  'ReceivedFromCustomerID': '0000130368',  'Devices': [{'ProductKey': '345457677' }]}";
             var requestObj = (HttpWebRequest)System.Net.WebRequest.Create(uri);
             requestObj.Method = "POST";
