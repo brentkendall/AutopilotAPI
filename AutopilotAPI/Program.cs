@@ -7,6 +7,7 @@ namespace AutopilotAPI
 {
     class Program
     {
+        // This sample calls the PQ (test) environment, not the LIVE environment
         static string AutpilotBaseURL = "https://api.microsoftoem.info/ComputerBuildReport/royd/v1/autopilot";
 
         static void Main(string[] args)
@@ -20,7 +21,7 @@ namespace AutopilotAPI
         private static void AutoPilotSearch()
         {
             Console.WriteLine($"======================================================================================================================");
-            var BatchID = "48065c9d-e3f6-41fc-b461-c546320dbefe:0de59b18-c850-4a92-b7d8-8fde5ba8f837";
+            var BatchID = "48065c9d-e3f6-41fc-b461-c546320dbefe:0de59b18-c850-4a92-b7d8-8fde5ba8f838";  // Enter a valid Batch ID - this is a bogus example only
             Console.WriteLine($"AutoPilot Search request for BatchID : {BatchID}");
             var uri = $"{AutpilotBaseURL}/?BatchID={BatchID}";
             var requestObj = (HttpWebRequest)System.Net.WebRequest.Create(uri);
@@ -48,7 +49,8 @@ namespace AutopilotAPI
             Console.WriteLine($"======================================================================================================================");
             Console.WriteLine($"AutoPilot validate");
             var uri = $"{AutpilotBaseURL}/validate";
-            var submitData = "{'PurchaseOrderId': 'Pilotsub1','GroupTag': 'tag1','TenantID': '0de59b18-c850-4a92-b7d8-8fde5ba8f837','TenantDomain': 'Dell.com',  'SoldToCustomerID': '0000130367',  'ReceivedFromCustomerID': '0000130367',  'Devices': [{'ProductKey': '345457676' }]}";
+            // Entere valid data for submitData below - this is an example with bogus data only
+            var submitData = "{'PurchaseOrderId': 'Pilotsub1','GroupTag': 'tag1','TenantID': '0de59b18-c850-4a92-b7d8-8fde5ba8f838','TenantDomain': 'SampleTenantName.com',  'SoldToCustomerID': '0000130368',  'ReceivedFromCustomerID': '0000130368',  'Devices': [{'ProductKey': '345457677' }]}";
             var requestObj = (HttpWebRequest)System.Net.WebRequest.Create(uri);
             requestObj.Method = "POST";
             byte[] bytes;
@@ -78,7 +80,8 @@ namespace AutopilotAPI
             Console.WriteLine($"======================================================================================================================");
             Console.WriteLine($"AutoPilot Register");
             var uri = $"{AutpilotBaseURL}";
-            var submitData = "{'PurchaseOrderId': 'Pilotsub1','GroupTag': 'tag1','TenantID': '0de59b18-c850-4a92-b7d8-8fde5ba8f837','TenantDomain': 'Dell.com',  'SoldToCustomerID': '0000130367',  'ReceivedFromCustomerID': '0000130367',  'Devices': [{'ProductKey': '345457676' }]}";
+            // Entere valid data for submitData below - this is an example with bogus data only
+            var submitData = "{'PurchaseOrderId': 'Pilotsub1','GroupTag': 'tag1','TenantID': '0de59b18-c850-4a92-b7d8-8fde5ba8f838','TenantDomain': 'SampleTenantName.com',  'SoldToCustomerID': '0000130368',  'ReceivedFromCustomerID': '0000130368',  'Devices': [{'ProductKey': '345457677' }]}";
             var requestObj = (HttpWebRequest)System.Net.WebRequest.Create(uri);
             requestObj.Method = "POST";
             byte[] bytes;
@@ -105,6 +108,7 @@ namespace AutopilotAPI
 
         private static X509Certificate GetCertificate()
         {
+            // Ensure you have a valid certificate to call this API
             var serialNumber = "560050872b5daa9f97bce34b3400000050872b";
             var certStore = new X509Store(StoreName.My, StoreLocation.LocalMachine);
             certStore.Open(OpenFlags.OpenExistingOnly);
